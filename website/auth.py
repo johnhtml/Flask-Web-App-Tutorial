@@ -42,15 +42,15 @@ def sign_up():
 
         user = User.query.filter_by(email=email).first()
         if user:
-            flash('Email already exists.', category='error') 
+            flash('Email already exists', category='error') 
         elif len(email) < 4:
             flash('Email must be grater than 3 characters.', category='error')
         elif len(first_name) < 2:
-            flash('First name must be grater than 1 characters.', category='error')
+            flash('First name must be grater than 1 characters', category='error')
         elif password1 != password2:
-            flash('Passwords do not match.', category='error')
+            flash('Passwords do not match', category='error')
         elif len(password1) < 7:
-            flash('password must be grater than 7 characters.', category='error')
+            flash('password must be grater than 7 characters', category='error')
         else:
             # hash password
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(password2, method='sha256'))
